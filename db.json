@@ -1,0 +1,68 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    },
+    {
+      "id": 1,
+      "title": "First Post",
+      "content": "This is the content of the first post",
+      "authorId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith"
+    }
+  ]
+}
