@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useForm } from "react-hook-form"
+import { signIn, signOut, useSession } from "next-auth/react"
+import Image from "next/image"
 
 type FormData = z.infer<typeof userSchema>
 
@@ -27,6 +29,8 @@ interface Todo {
   body: string
 }
 export default function Home() {
+  const { data: session } = useSession()
+
   const form = useForm<z.infer<typeof userSchema>>({
     resolver: zodResolver(userSchema),
     defaultValues: {
@@ -63,7 +67,28 @@ export default function Home() {
   }
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
-      <Button onClick={() => handleClick()}>Theme change</Button>
+      <Button className="my-5" onClick={() => handleClick()}>
+        Theme change
+      </Button>
+      {session ? (
+        <>
+          <Image
+            src={session.user?.image as string}
+            alt={session.user?.name as string}
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <h1>Welcome, {session.user?.name}!</h1>
+          <Button onClick={() => signOut({ callbackUrl: "/" })}>Logout</Button>
+        </>
+      ) : (
+        <>
+          <h1>Please login to view posts</h1>
+          <Button onClick={() => signIn()}>Sign in</Button>
+        </>
+      )}
+
       <h1 className="text-3xl py-5">Post list</h1>
       <div>{postData?.slice(0, 2)?.map((item: Todo) => <p key={item.id}>{item.title}</p>)}</div>
 
