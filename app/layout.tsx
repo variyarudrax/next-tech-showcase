@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "../styles/globals.css"
 import Tanstackprovider from "@/providers/TanstackProvider"
+import SessionWrapper from "@/components/SessionWrapper"
+import Header from "@/components/header"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -16,12 +18,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={inter.className} suppressHydrationWarning={true}>
-        <Tanstackprovider>
-          <div>{children}</div>
-        </Tanstackprovider>
-      </body>
-    </html>
+    <SessionWrapper>
+      <html lang="en" className="light">
+        <body className={inter.className} suppressHydrationWarning={true}>
+          <Header />
+          <Tanstackprovider>
+            <div>{children}</div>
+          </Tanstackprovider>
+        </body>
+      </html>
+    </SessionWrapper>
   )
 }
