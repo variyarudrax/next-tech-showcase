@@ -3,48 +3,74 @@
     {
       "id": 1,
       "title": "First Post",
-      "content": "This is the content of the first post",
-      "authorId": 1
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "authorId": 1,
+      "autherImg": "https://randomuser.me/api/portraits/men/40.jpg",
+      "autherName": "John Doe",
+      "createdAt": "Mar 12",
+      "postImage": "https://images.unsplash.com/photo-1578496479939-722d9dd1cc5b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 2,
       "title": "First Post",
-      "content": "This is the content of the first post",
-      "authorId": 1
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "authorId": 1,
+      "autherImg": "https://randomuser.me/api/portraits/men/40.jpg",
+      "autherName": "John Doe",
+      "createdAt": "Apr 12",
+      "postImage": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 43,
       "title": "First Post",
-      "content": "This is the content of the first post",
-      "authorId": 1
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "authorId": 1,
+      "autherImg": "https://randomuser.me/api/portraits/men/40.jpg",
+      "createdAt": "Mar 12",
+      "autherName": "John Doe",
+      "postImage": "https://images.unsplash.com/photo-1578496479939-722d9dd1cc5b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 4,
       "title": "First Post",
-      "content": "This is the content of the first post",
-      "authorId": 1
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "authorId": 1,
+      "autherImg": "https://randomuser.me/api/portraits/men/40.jpg",
+      "createdAt": "Apr 12",
+      "autherName": "John Doe",
+      "postImage": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 5,
       "title": "First Post",
-      "content": "This is the content of the first post",
-      "authorId": 1
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "authorId": 1,
+      "autherImg": "https://randomuser.me/api/portraits/men/40.jpg",
+      "createdAt": "Mar 12",
+      "autherName": "John Doe",
+      "postImage": "https://images.unsplash.com/photo-1578496479939-722d9dd1cc5b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       "id": 6,
       "title": "First Post",
-      "content": "This is the content of the first post",
-      "authorId": 1
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "authorId": 1,
+      "autherImg": "https://randomuser.me/api/portraits/men/40.jpg",
+      "createdAt": "Apr 12",
+      "autherName": "John Doe",
+      "postImage": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
   ],
   "users": [
     {
-      "id": 1,
-      "name": "John Doe"
+      "userId": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com"
     },
     {
-      "id": 2,
-      "name": "Jane Smith"
+      "userId": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com"
     }
   ]
 }
