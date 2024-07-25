@@ -51,7 +51,7 @@ export const columns: ColumnDef<Person>[] = [
   }
 ]
 
-const Page = () => {
+const PostPage = () => {
   const [sorting, setSorting] = useState<SortingState>([])
   const [filtering, setFiltering] = useState("")
   const [pagination, setPagination] = useState<PaginationState>({
@@ -161,4 +161,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default PostPage

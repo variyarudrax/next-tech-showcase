@@ -2,8 +2,9 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "../styles/globals.css"
 import Tanstackprovider from "@/providers/TanstackProvider"
-import SessionWrapper from "@/components/SessionWrapper"
-import Header from "@/components/header"
+import { SiteFooter } from "@/components/footer"
+import SessionWrapper from "@/components/sessionWrapper"
+import Header from "@/components/navbar"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -19,12 +20,16 @@ export default function RootLayout({
 }>) {
   return (
     <SessionWrapper>
-      <html lang="en" className="light">
-        <body className={inter.className} suppressHydrationWarning={true}>
+      <html lang="en">
+        <body
+          className={`${inter.className} transition-colors duration-150`}
+          suppressHydrationWarning={true}
+        >
           <Header />
           <Tanstackprovider>
-            <div>{children}</div>
+            <div className="my-2">{children}</div>
           </Tanstackprovider>
+          <SiteFooter />
         </body>
       </html>
     </SessionWrapper>

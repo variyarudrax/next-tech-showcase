@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
