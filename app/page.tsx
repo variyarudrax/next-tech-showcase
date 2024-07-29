@@ -34,7 +34,7 @@ export default function Home() {
     )
   }
   if (isError) {
-    return <main className="container">There is an error.</main>
+    return <main className="container">There is an error</main>
   }
 
   return (
