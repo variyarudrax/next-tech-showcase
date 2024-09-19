@@ -30,7 +30,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField

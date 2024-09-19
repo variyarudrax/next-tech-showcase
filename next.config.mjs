@@ -6,7 +6,8 @@ const nextConfig = {
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
       { protocol: "http", hostname: "avatars.githubusercontent.com" },
       { protocol: "https", hostname: "randomuser.me" },
-      { protocol: "https", hostname: "images.unsplash.com" }
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "lh3.googleusercontent.com" }
     ]
   }
 }

@@ -1,16 +1,17 @@
+import { NextRequest, NextResponse } from "next/server"
 import { getToken } from "next-auth/jwt"
-import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
 
-const protectedRoutes = ["/dashboard", "/profile", "/posts", "/about"]
+export async function middleware(req: NextRequest) {
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
 
-export default async function middleware(request: NextRequest) {
-  const token = await getToken({ req: request })
-  const url = request.nextUrl
-
-  const isProtectedRoute = protectedRoutes.some((prefix) => url.pathname.startsWith(prefix))
-
-  if (!token && isProtectedRoute) {
-    return NextResponse.redirect(new URL("/", request.url))
+  if (!token) {
+    const url = new URL("/login", req.url)
+    return NextResponse.redirect(url)
   }
+
+  return NextResponse.next()
+}
+
+export const config = {
+  matcher: ["/", "/blogs/:path*", "/users/:path*"]
 }
