@@ -4,6 +4,7 @@ import "../styles/globals.css"
 import Providers from "@/providers/providers"
 import { Session } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import { ThemeProvider } from "next-themes"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,17 +21,17 @@ export default function RootLayout({
   session: Session | null
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn("min-h-screen w-full h-full", inter.className, {
-          "debug-screens": process.env.NODE_ENV === "development"
-        })}
-        suppressHydrationWarning={true}
-      >
-        <Providers session={session}>
-          <div className="flex-1">{children}</div>
-        </Providers>
-      </body>
+    <html lang="en" suppressHydrationWarning={true}>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+        <body
+          suppressHydrationWarning={true}
+          className={cn("min-h-screen w-full h-full", inter.className)}
+        >
+          <Providers session={session}>
+            <div className="flex-1">{children}</div>
+          </Providers>
+        </body>
+      </ThemeProvider>
     </html>
   )
 }

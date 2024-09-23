@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query"
 import { CircleArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
-import { fetchUserData } from "@/services/services"
+import { fetchUserData } from "@/services"
 import Layout from "@/components/layout"
 
 type Params = {
