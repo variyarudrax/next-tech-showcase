@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "../styles/globals.css"
 import Providers from "@/providers/providers"
-import { Session } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "next-themes"
 
@@ -14,20 +13,15 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
-  session
+  children
 }: Readonly<{
   children: React.ReactNode
-  session: Session | null
 }>) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-        <body
-          suppressHydrationWarning={true}
-          className={cn("min-h-screen w-full h-full", inter.className)}
-        >
-          <Providers session={session}>
+        <body className={cn("min-h-screen w-full h-full", inter.className)}>
+          <Providers>
             <div className="flex-1">{children}</div>
           </Providers>
         </body>

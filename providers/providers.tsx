@@ -4,11 +4,9 @@ import { SessionProvider } from "next-auth/react"
 import React, { ReactNode } from "react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import { Session } from "@/lib/types"
 
 interface ProvidersProps {
   children: ReactNode
-  session: Session | null
 }
 
 const queryClient = new QueryClient({
@@ -19,9 +17,9 @@ const queryClient = new QueryClient({
   }
 })
 
-const Providers = ({ children, session }: ProvidersProps) => {
+const Providers = ({ children }: ProvidersProps) => {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         {children}

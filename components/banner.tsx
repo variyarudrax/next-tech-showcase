@@ -1,6 +1,7 @@
 import React from "react"
 import { Button } from "./ui/button"
 import TypeAnimation from "./type-Animation"
+import Link from "next/link"
 
 const Banner = () => {
   return (
@@ -8,10 +9,12 @@ const Banner = () => {
       <div className="space-y-8">
         <h3 className="text-xl">Welcome to Next Tech ShowCase</h3>
         <TypeAnimation />
-        <h3 className="text-xl">
+        <h3 className="text-xl pb-8">
           Discover stories, thinking, and expertise from writers on any topic
         </h3>
-        <Button>Start Reading</Button>
+        <Link href="/blogs">
+          <Button>Start Reading</Button>
+        </Link>
       </div>
     </div>
   )
