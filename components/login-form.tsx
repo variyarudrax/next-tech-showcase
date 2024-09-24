@@ -10,7 +10,7 @@ const LoginForm = () => {
   const handleSocialSignIn = async (provider: string) => {
     setLoading(provider)
     try {
-      await signIn(provider, { callbackUrl: process.env.NEXT_PUBLIC_BASE_URL })
+      await signIn(provider, { callbackUrl: process.env.NEXTAUTH_URL })
     } catch (error) {
       console.error(error)
     } finally {
