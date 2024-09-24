@@ -1,14 +1,13 @@
 "use server"
 
 import React from "react"
-
-import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"
+
 import LoginForm from "@/components/login-form"
+import { auth } from "@/providers/auth"
 
 const LoginPage = async () => {
-  const session = await getServerSession(authOptions)
+  const session = await auth()
   if (session?.user) redirect("/")
 
   return (
