@@ -6,9 +6,10 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useQuery } from "@tanstack/react-query"
 import { CircleArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import { fetchUserData } from "@/services"
 import Layout from "@/components/layout"
+import { useSession } from "next-auth/react"
 
 type Params = {
   params: {
@@ -76,7 +77,10 @@ const BackButton = ({ router }: { router: ReturnType<typeof useRouter> }) => {
 
 const UserInfo = ({ params: { id } }: Params) => {
   const router = useRouter()
-
+  const { data: session } = useSession()
+  if (session === undefined) {
+    redirect("/login")
+  }
   const {
     data: user,
     isLoading,

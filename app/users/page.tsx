@@ -6,13 +6,17 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { User } from "@/lib/types"
 import { fetchUsersData } from "@/services"
 import { useQuery } from "@tanstack/react-query"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import React from "react"
 
 const UsersPage = () => {
   const router = useRouter()
-
+  const { data: session } = useSession()
+  if (session === undefined) {
+    redirect("/login")
+  }
   const {
     data: users,
     isLoading,
