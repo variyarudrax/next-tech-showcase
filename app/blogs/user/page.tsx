@@ -1,8 +1,12 @@
 import Layout from "@/components/layout"
 import UserForm from "@/components/user-form"
+import { auth } from "@/providers/auth"
+import { redirect } from "next/navigation"
 import React from "react"
 
-const UserRegisterPage = () => {
+const UserRegisterPage = async () => {
+  const session = await auth()
+  if (!session) redirect("/")
   return (
     <Layout>
       <div className="flex items-center justify-center bg-white">
