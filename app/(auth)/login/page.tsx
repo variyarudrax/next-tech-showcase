@@ -10,6 +10,8 @@ const LoginPage = async () => {
   const session = await auth()
   if (session?.user) redirect("/")
 
+  console.log(session, "session")
+
   return (
     <>
       <div className="min-h-screen flex items-center justify-center">
