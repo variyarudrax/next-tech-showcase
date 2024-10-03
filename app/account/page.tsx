@@ -6,13 +6,9 @@ import { Icons } from "@/components/ui/icons"
 import { useSession } from "next-auth/react"
 import Image from "next/image"
 import React from "react"
-import { redirect } from "next/navigation"
 
 const UserProfile = () => {
   const { data: session, status } = useSession()
-  if (session === undefined) {
-    redirect("/login")
-  }
   return (
     <Layout>
       {status === "loading" ? (

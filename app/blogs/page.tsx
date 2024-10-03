@@ -8,15 +8,11 @@ import { fetchBlogs } from "@/services"
 import { columns } from "./columns"
 import { DataTable } from "@/components/data-table"
 import Layout from "@/components/layout"
-import { useSession } from "next-auth/react"
-import { redirect } from "next/navigation"
+
 const BlogsPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 10
-  const { data: session } = useSession()
-  if (session === undefined) {
-    redirect("/login")
-  }
+
   const {
     data: posts,
     isLoading,

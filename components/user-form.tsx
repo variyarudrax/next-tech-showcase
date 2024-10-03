@@ -96,7 +96,7 @@ const UserForm = () => {
               <p className="text-sm text-red-600">{errors.email?.message as string}</p>
             )}
           </div>
-          <div className="grid gap-1">
+          <div className="grid gap-1 relative">
             <Label className="sr-only" htmlFor="password">
               Password
             </Label>
@@ -114,7 +114,7 @@ const UserForm = () => {
               type="button"
               onClick={() => setShowPassword(!showPassword)}
               disabled={loading !== null || !!user}
-              className="absolute ml-[320px] pt-2 flex items-center text-gray-500"
+              className="absolute z-2 bg-white right-2 top-2 text-gray-500"
               style={{ pointerEvents: "all" }}
             >
               {showPassword ? <EyeOff /> : <Eye />}

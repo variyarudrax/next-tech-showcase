@@ -6,17 +6,13 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { User } from "@/lib/types"
 import { fetchUsersData } from "@/services"
 import { useQuery } from "@tanstack/react-query"
-import { useSession } from "next-auth/react"
 import Link from "next/link"
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import React from "react"
 
 const UsersPage = () => {
   const router = useRouter()
-  const { data: session } = useSession()
-  if (session === undefined) {
-    redirect("/login")
-  }
+
   const {
     data: users,
     isLoading,
@@ -33,7 +29,7 @@ const UsersPage = () => {
   }
   return (
     <Layout>
-      <div className="mx-auto p-5">
+      <div className="mx-auto pt-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
           {isLoading
             ? Array.from({ length: 8 }).map((_, idx) => (

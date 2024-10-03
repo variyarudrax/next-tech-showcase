@@ -9,7 +9,7 @@ const UserRegisterPage = async () => {
   if (!session) redirect("/")
   return (
     <Layout>
-      <div className="flex items-center justify-center bg-white">
+      <div className="flex items-center justify-center mt-4">
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">

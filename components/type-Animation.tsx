@@ -17,7 +17,7 @@ const TypeAnimation = () => {
       ]}
       wrapper="span"
       speed={50}
-      className="text-[3.5rem] inline-block"
+      className="text-[2rem] md:text-[3.5rem] inline-block"
       repeat={Infinity}
     />
   )

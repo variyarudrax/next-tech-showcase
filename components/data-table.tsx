@@ -33,7 +33,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
 
-import { ScrollArea } from "@/components/ui/scroll-area"
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { useDebounce } from "@/hooks/useDebounce"
 import { useRouter } from "next/navigation"
 
@@ -74,45 +74,47 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
 
   return (
     <div className="w-full flex flex-col h-[calc(100vh-188px)]">
-      <div className="flex items-center py-4 flex-wrap">
+      <div className="flex items-center py-4 flex-wrap justify-between gap-5">
         <Input
           placeholder="Filter Title..."
           value={filterValue}
           onChange={(event) => setFilterValue(event.target.value)}
-          className="max-w-sm w-full sm:w-auto mb-2 sm:mb-0"
+          className="w-72"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <Button variant={"outline"} className="ml-3" onClick={() => router.push("/blogs/user")}>
-          Register User
-        </Button>
+        <div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" className="ml-auto">
+                Columns
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) => column.toggleVisibility(!!value)}
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  )
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button variant={"outline"} className="ml-3" onClick={() => router.push("/blogs/user")}>
+            Register User
+          </Button>
+        </div>
       </div>
-      <div className="rounded-md border  overflow-hidden">
-        <ScrollArea className="h-full">
-          <Table className="min-w-full">
-            <TableHeader>
+      <div className="rounded-md border w-full  overflow-hidden">
+        <ScrollArea className="h-full w-full overflow-x-auto">
+          <Table className="relative min-w-full">
+            <TableHeader className="w-40">
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
@@ -147,6 +149,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
               )}
             </TableBody>
           </Table>
+          <ScrollBar orientation="horizontal" />
         </ScrollArea>
       </div>
     </div>
