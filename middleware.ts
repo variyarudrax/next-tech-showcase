@@ -7,12 +7,16 @@ export async function middleware(req: any) {
   const token = await getToken({ req, secret })
 
   if (token) {
-    return NextResponse.next()
-  } else if (req.nextUrl.pathname !== "/login" && !token) {
+    return req.nextUrl.pathname === "/login"
+      ? NextResponse.redirect(new URL("/", req.url))
+      : NextResponse.next()
+  }
+
+  if (req.nextUrl.pathname !== "/login") {
     return NextResponse.redirect(new URL("/login", req.url))
   }
 }
 
 export const config = {
-  matcher: ["/", "/blogs", "/users", "/users/:path*", "/account"]
+  matcher: ["/", "/blogs", "/users", "/users/:path*", "/account", "/login"]
 }
