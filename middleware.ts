@@ -1,7 +1,7 @@
 import { getToken } from "next-auth/jwt"
 import { NextResponse } from "next/server"
 
-const secret = process.env.NEXTAUTH_SECRET || "default_secret"
+const secret = process.env.NEXTAUTH_SECRET || ""
 
 export async function middleware(req: any) {
   const token = await getToken({ req, secret })
