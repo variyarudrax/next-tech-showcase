@@ -163,6 +163,9 @@ export default function Header() {
                       <Link href="api/auth/signin">Sign In</Link>
                     </div>
                   )}
+                  <Separator />
+
+                  <ThemeSwitcher />
                 </div>
               </SheetContent>
             </Sheet>
