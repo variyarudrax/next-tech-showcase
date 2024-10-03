@@ -5,6 +5,7 @@ const secret = process.env.NEXTAUTH_SECRET || ""
 
 export async function middleware(req: any) {
   const token = await getToken({ req, secret })
+  console.log("token", token)
 
   if (token) {
     return req.nextUrl.pathname === "/login"
@@ -12,7 +13,7 @@ export async function middleware(req: any) {
       : NextResponse.next()
   }
 
-  if (req.nextUrl.pathname !== "/login") {
+  if (req.nextUrl.pathname !== "/login" && !token) {
     return NextResponse.redirect(new URL("/login", req.url))
   }
 }
