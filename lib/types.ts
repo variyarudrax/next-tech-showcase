@@ -1,22 +1,13 @@
-export type Session = {
-  user: {
-    name: string
-    email: string
-    image: string
-  }
-  expires: string
-  access_token: string
-}
-export type Geo = {
+type Geo = {
   lat: string
   lng: string
 }
-export type Company = {
+type Company = {
   name: string
   catchPhrase: string
   bs: string
 }
-export type Address = {
+type Address = {
   street: string
   suite: string
   city: string

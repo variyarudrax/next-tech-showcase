@@ -4,6 +4,8 @@ import "../styles/globals.css"
 import Providers from "@/providers/providers"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "next-themes"
+import Layout from "@/components/layout"
+import { headers } from "next/headers"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -17,12 +19,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const headersList = headers()
+  const path = headersList.get("x-pathname")
+
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
         <body className={cn("min-h-screen w-full h-full", inter.className)}>
           <Providers>
-            <div className="flex-1">{children}</div>
+            {path !== "/login" ? (
+              <Layout>
+                <div className="flex-1 h-full">{children}</div>
+              </Layout>
+            ) : (
+              <div className="flex-1 h-full">{children}</div>
+            )}
           </Providers>
         </body>
       </ThemeProvider>

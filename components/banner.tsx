@@ -5,7 +5,7 @@ import Link from "next/link"
 
 const Banner = () => {
   return (
-    <div className="h-full flex justify-center items-center text-center py-32">
+    <div className="h-full flex justify-center items-center text-center">
       <div className="space-y-8">
         <h3 className="text-md md:text-xl">Welcome to Next Tech ShowCase</h3>
         <TypeAnimation />

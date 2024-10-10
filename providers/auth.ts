@@ -18,5 +18,21 @@ export const {
       clientSecret: process.env.GITHUB_SECRET as string
     })
   ],
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60
+  },
+  cookies: {
+    sessionToken: {
+      // eslint-disable-next-line quotes
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: process.env.NODE_ENV === "production" // Ensure cookies are secure in production
+      }
+    }
+  }
 })
