@@ -3,14 +3,14 @@
 import React, { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import axios from "axios"
 import { ErrorResponse, UserFormData } from "@/lib/types"
 import { Eye, EyeOff } from "lucide-react"
 import { useMutation } from "@tanstack/react-query"
+import { userSchema } from "@/schema/validationSchema"
+import { postUserFormData } from "@/services"
 
 const UserForm = () => {
   const [loading, setLoading] = useState<string | null>(null)
@@ -25,20 +25,11 @@ const UserForm = () => {
     formState: { errors },
     reset
   } = useForm<UserFormData>({
-    resolver: zodResolver(
-      z.object({
-        name: z.string().min(1, "Name is required"),
-        email: z.string().email("Invalid email address"),
-        password: z.string().min(6, "Password must be at least 6 characters long")
-      })
-    )
+    resolver: zodResolver(userSchema)
   })
 
   const registerMutation = useMutation<UserFormData, Error, UserFormData>({
-    mutationFn: async (data: UserFormData) => {
-      const response = await axios.post("https://jsonplaceholder.typicode.com/posts", data)
-      return response.data
-    },
+    mutationFn: postUserFormData,
     onSuccess: (data) => {
       setUser(data)
       setLoading(null)
@@ -117,14 +108,18 @@ const UserForm = () => {
               className="absolute z-2 bg-white right-2 top-2 text-gray-500"
               style={{ pointerEvents: "all" }}
             >
-              {showPassword ? <EyeOff /> : <Eye />}
+              {showPassword ? (
+                <EyeOff className="dark:bg-black" />
+              ) : (
+                <Eye className="dark:bg-black" />
+              )}
             </button>
             {errors.password && (
               <p className="text-red-600 text-sm">{errors.password?.message as string}</p>
             )}
           </div>
           <Button className="mt-3" type="submit" disabled={loading !== null || !!user}>
-            Register
+            {loading === null ? "Register" : "Loading..."}
           </Button>
           {error && <p className="text-red-600">{error}</p>}
         </div>
@@ -135,34 +130,41 @@ const UserForm = () => {
           <h2 className="text-xl mb-4 font-semibold text-green-900">
             User Registered Successfully
           </h2>
-          <p>
-            <strong>Name:</strong> {user?.name}
-          </p>
-          <p>
-            <strong>Email:</strong> {user?.email}
-          </p>
-          <div className="flex items-center">
-            <strong>Password:</strong>
-            <span className="ml-2">
-              {showRegisteredPassword ? user?.password : user?.password.replace(/./g, "*")}
-            </span>
-            <button
-              onClick={() => setShowRegisteredPassword(!showRegisteredPassword)}
-              className="ml-2 text-blue-500"
-            >
-              {showRegisteredPassword ? <EyeOff /> : <Eye />}
-            </button>
-          </div>
-          <Button
-            onClick={() => {
-              setUser(null)
-              setShowRegisteredPassword(false)
-              reset()
-            }}
-            className="mt-6"
-          >
-            Register Another User
-          </Button>
+          {(() => {
+            const { name, email, password } = user
+            return (
+              <>
+                <p>
+                  <strong>Name:</strong> {name}
+                </p>
+                <p>
+                  <strong>Email:</strong> {email}
+                </p>
+                <div className="flex items-center">
+                  <strong>Password:</strong>
+                  <span className="ml-2">
+                    {showRegisteredPassword ? password : password.replace(/./g, "*")}
+                  </span>
+                  <button
+                    onClick={() => setShowRegisteredPassword(!showRegisteredPassword)}
+                    className="ml-2 text-blue-500"
+                  >
+                    {showRegisteredPassword ? <EyeOff /> : <Eye />}
+                  </button>
+                </div>
+                <Button
+                  onClick={() => {
+                    setUser(null)
+                    setShowRegisteredPassword(false)
+                    reset()
+                  }}
+                  className="mt-6"
+                >
+                  Register Another User
+                </Button>
+              </>
+            )
+          })()}
         </div>
       )}
     </div>

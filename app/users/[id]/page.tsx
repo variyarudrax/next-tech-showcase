@@ -8,7 +8,6 @@ import { CircleArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { fetchUserData } from "@/services"
-import Layout from "@/components/layout"
 
 type Params = {
   params: {
@@ -88,11 +87,12 @@ const UserInfo = ({ params: { id } }: Params) => {
   })
 
   if (isError) {
-    return <div className="container mx-auto p-4">Error fetching photos.</div>
+    return <div className="container mx-auto p-4 text-red-500">Error fetching User Info.</div>
   }
 
   return (
-    <Layout>
+    <>
+      {" "}
       {isLoading || isFetching ? (
         <LoadingSkeleton />
       ) : !user || Object.keys(user).length === 0 ? (
@@ -102,48 +102,52 @@ const UserInfo = ({ params: { id } }: Params) => {
       )}
       {!isFetching && (
         <div className="container mx-auto p-4">
-          <CardTitle className="my-4">User Details</CardTitle>
-          <Card className="h-auto w-full p-4">
-            <CardHeader>
-              <CardTitle className="text-xl font-semibold">{user?.name}</CardTitle>
-              <CardDescription className="text-sm">{user?.email}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="mb-2">
-                <strong>Address:</strong>
-                <p>
-                  {user?.address?.street}, {user?.address?.suite}
-                </p>
-                <p>
-                  {user?.address?.city}, {user?.address?.zipcode}
-                </p>
-              </div>
-              <div className="mb-2">
-                <strong>Phone:</strong>
-                <p>{user?.phone}</p>
-              </div>
-              <div className="mb-2">
-                <strong>Website:</strong>
-                <a
-                  href={`http://${user?.website}`}
-                  className="text-blue-500"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {user?.website}
-                </a>
-              </div>
-              <div className="mb-2">
-                <strong>Company:</strong>
-                <p>{user?.company?.name}</p>
-                <p className="italic">{user?.company?.catchPhrase}</p>
-                <p>{user?.company?.bs}</p>
-              </div>
-            </CardContent>
-          </Card>
+          {user &&
+            (() => {
+              const { name, email, address, phone, website, company } = user
+              return (
+                <>
+                  <CardTitle className="my-4">User Details</CardTitle>
+                  <Card className="h-auto w-full p-4">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold">{name}</CardTitle>
+                      <CardDescription className="text-sm">{email}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="mb-2">
+                        <strong>Address:</strong>
+                        <p>{`${address?.street}, ${address?.suite}`}</p>
+                        <p>{`${address?.city}, ${address?.zipcode}`}</p>
+                      </div>
+                      <div className="mb-2">
+                        <strong>Phone:</strong>
+                        <p>{phone}</p>
+                      </div>
+                      <div className="mb-2">
+                        <strong>Website:</strong>
+                        <a
+                          href={`http://${website}`}
+                          className="text-blue-500"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {website}
+                        </a>
+                      </div>
+                      <div className="mb-2">
+                        <strong>Company:</strong>
+                        <p>{company?.name}</p>
+                        <p className="italic">{company?.catchPhrase}</p>
+                        <p>{company?.bs}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </>
+              )
+            })()}
         </div>
       )}
-    </Layout>
+    </>
   )
 }
 
